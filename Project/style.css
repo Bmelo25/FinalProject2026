@@ -1,21 +1,53 @@
-.title{
-    text-align: center;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+}
+header {
+    padding: 0 32px;
+    padding-bottom: 10px; 
+    background-color: rgb(255, 255, 255);
+    border-bottom: 1px solid #B8860B;
+}
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 64px;
+    display: flex;
+    align-items: center;
+}
+.logo{
+    text-align: left;
+    font-family: "Poppins", sans-serif;
+    font-size: 30px;
+    text-decoration: none;
+    color: black;
 }
 .card{
+    
+    margin-top: 30px;
     justify-content: center;
-    background-color: rgb(149, 116, 84);
+    width: 680px;
+    justify-self: center;
+    background-color: #FFD700;
     border: 2px;
     border-radius: 10px;
     padding: 50px;
+   
     
 }
 
 .card p {
+    font-family: "Poppins", sans-serif;
     font-size: 15px;
     justify-self: left;
+    line-height: 2rem;
 }
 .guess{
-   
+    font-family: "Poppins", sans-serif;
+    margin-top: 10px;
+   text-align: center;
     display: grid;
       grid-template-columns: 150px 180px 120px 120px;
         
