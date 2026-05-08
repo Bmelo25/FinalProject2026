@@ -1,0 +1,25 @@
+.title{
+    text-align: center;
+}
+.card{
+    justify-content: center;
+    background-color: rgb(149, 116, 84);
+    border: 2px;
+    border-radius: 10px;
+    padding: 50px;
+    
+}
+
+.card p {
+    font-size: 15px;
+    justify-self: left;
+}
+.guess{
+   
+    display: grid;
+      grid-template-columns: 150px 180px 120px 120px;
+        
+         column-gap: 30px;
+         row-gap: 0px;
+   justify-content: center;
+}
