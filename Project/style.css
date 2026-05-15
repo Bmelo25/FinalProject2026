@@ -6,19 +6,42 @@
 }
 header {
     padding: 0 32px;
-    padding-bottom: 10px; 
+   
     background-color: rgb(255, 255, 255);
-    border-bottom: 1px solid #B8860B;
+    border-bottom: 2px solid #B8860B;
+
+   
 }
 .header-inner {
+   
     max-width: 1200px;
     margin: 0 auto;
     height: 64px;
+     padding-bottom: 10px; 
     display: flex;
     align-items: center;
 }
+.settings-menu{
+ font-family: "Poppins", sans-serif;
+    
+       margin-left: 740px;
+    font-size: 25px;
+  gap: 8px;
+    
+   
+
+}
+
+.settings-menu a:hover{
+    color: rgb(67, 67, 67);
+}
+a{
+    color: gray;
+    text-decoration: none;
+}
 .logo{
     text-align: left;
+    justify-content: left;
     font-family: "Poppins", sans-serif;
     font-size: 30px;
     text-decoration: none;
@@ -44,7 +67,7 @@ header {
     justify-self: left;
     line-height: 2rem;
 }
-.guess{
+.answer-boxes{
     font-family: "Poppins", sans-serif;
     margin-top: 10px;
    text-align: center;
@@ -54,4 +77,24 @@ header {
          column-gap: 30px;
          row-gap: 0px;
    justify-content: center;
+}
+
+
+input{
+    background-color: rgb(210, 186, 186);
+    border-width: 1px;
+
+}
+input:focus{
+    outline: none;
+}
+
+input:hover{
+    cursor: default;
+}
+.guess{
+    background-color: white;
+    border-color: #cfc279;
+    border-width: 5px;
+    justify-self: center;
 }
