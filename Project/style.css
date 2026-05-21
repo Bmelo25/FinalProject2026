@@ -80,21 +80,30 @@ a{
 }
 
 
-input{
+.answer-box-1, .answer-box-2, .answer-box-3, .answer-box-4{
     background-color: rgb(210, 186, 186);
     border-width: 1px;
 
 }
-input:focus{
+.answer-box:focus{
     outline: none;
 }
 
-input:hover{
+.answer-box:hover{
     cursor: default;
 }
 .guess{
     background-color: white;
     border-color: #cfc279;
     border-width: 5px;
-    justify-self: center;
+
 }
+.j{
+        justify-self: center;
+}
+
+footer{
+    background-color: aliceblue;
+    
+}
+
