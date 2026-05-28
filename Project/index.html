@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dark_mode.css">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
@@ -17,12 +18,11 @@
                ⭐<span class="logo-text">Celeb<span>dle</span></span>
             </a>
             <nav class="settings-menu">
-                <a href="">Settings</a>
-                <a href="">About</a>
+                <button class = "settings"href="">Settings</button>
+                <button>About</button>
             </nav>
         </div>
     </header>
-    
     <div class="card"> 
         <p>Name:????</p>
         <p>nationality:????</p>
@@ -31,13 +31,22 @@
         <p>Height:????</p>
         <p>Age:????</p>
     </div>
+    <!-- overlay for settings -->
+  <div class="overlay">
+    <div class="inner">
+       <p class="exit">X</p>
+        <button class=" dark-mode-button">dark mode</button>
+      
+    </div>
+  </div>
     <div class="typing-box">
         <input type="text"placeholder = "type here...." class="guess">
         </div>
+        
 
     <div class="answer-boxes">
         
-        <!-- <p> Name Nationality Gender Net Worth</p> -->
+      
          <span>name</span>
          <span>nationality</span>
          <span>Gender</span>
@@ -46,7 +55,7 @@
          <span>Age</span>
          
 
-         <!-- notes put in seperate divs -->
+      
  
 
        

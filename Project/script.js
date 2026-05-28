@@ -1,11 +1,30 @@
-guess = document.querySelector(".guess")
-answer = document.querySelectorAll(".answer-box-1")
-card = document.querySelector(".card")
-
-
+const guess = document.querySelector(".guess")
+const answer = document.querySelectorAll(".answer-box-1")
+const card = document.querySelector(".card")
+const settings = document.querySelector(".settings")
+const overlay = document.querySelector(".overlay")
+const exit = document.querySelector(".exit")
+const darkModeButton = document.querySelector(".dark-mode-button")
 let secretCelebrity = null
 
+darkModeButton.addEventListener('click', ()=>{
+    toggleDarkMode()
+    if(document.body.classList.contains('dark-mode')){
+        darkModeButton.textContent = "light mode"
+    } else if(!document.body.classList.contains('dark-mode')){
+        darkModeButton.textContent = "dark mode"
+    }
+})
 
+settings.addEventListener ('click', (e) =>{
+    e.preventDefault()
+  
+   overlayOn()
+
+})
+exit.addEventListener('click', () =>{
+    overlayOff()
+})
 guess.addEventListener('keydown', async (e) =>{
     
     if (e.key === "Enter"){
@@ -32,16 +51,19 @@ guess.addEventListener('keydown', async (e) =>{
 
 }
 })
-const correctAnswer = "hello"
 
+
+function overlayOn (){
+    overlay.style.display = "block";
+}
+function overlayOff (){
+    overlay.style.display = "none";
+}
 
 function toggleDarkMode(){
-
+    document.body.classList.toggle('dark-mode')
 }
 
-function settings(){
-
-}
 
 
 // This is going to be fetching the API and generating a random celebrity, assigning them to correct variables and 
@@ -58,13 +80,6 @@ try{
 
     return data[0]
    
-    // Just a quick FYI, some names have no storage so there is going to be a function that will fix it
-    // const guessName = data[0].name
-    // const guessNationality = data[0].nationality
-    // const guessGender = data[0].gender
-    // const guessNetWorth = data[0].net_worth
-    // console.log(guessNetWorth)
-    // console.log(data)
 
     } catch (error) {
         console.log(error)
@@ -88,19 +103,14 @@ const generateCelebrity = async () => {
         // the random celeb generation uses math to generate a random celebrity out of the array of 30
         secretCelebrity = answerdata[math]  
 
-        //  These variables are the correct answers here, which work with the answerChecker function
-        // const correctName = secretCelebrity.name
-        // const correctNationality = secretCelebrity.nationality
-        // const correctGender = secretCelebrity.gender
-        // const correctNetWorth = secretCelebrity.net_worth
-        // console.log(correctGender)
-        //lowk do not need these ^
+  
 
         console.log(secretCelebrity)
     } catch (error) {
         console.log(error)
     }
 }
+
 generateCelebrity()
 function answerChecker(guess, target){
 // This will check if the answer is correct adding to a counter
@@ -130,7 +140,7 @@ function answerChecker(guess, target){
     } else if (guess.height > target.height) {
     } else {
     }
-
+    
     const currentYear = new Date().getFullYear()
     const guessAge = currentYear - new Date(guess.birth_date).getFullYear()
     const targetAge = currentYear - new Date(target.birth_date).getFullYear()
@@ -138,9 +148,9 @@ function answerChecker(guess, target){
     } else if (guessAge > targetAge) {
     } else {
     }
-
-
-
+    
+    
+    
 }
 
 //meters to feet inches
@@ -154,3 +164,4 @@ function metersToFeetInches(meters) {
     }
     return `${feet}'${inches}"`    
 }
+
