@@ -40,6 +40,21 @@ body.dark-mode .settings-menu :hover{
     color: rgb(67, 67, 67);
 }
 
+  body.dark-mode .tile{
+    width: 80px;
+    height: 20px;
+    background-color: rgb(237, 113, 229);
+    display: flex;
+    border: 1px solid black;
+   
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: translate(20%);
+    
+   
+} 
+
 body.dark-mode .logo{
     text-align: left;
     justify-content: left;
@@ -48,38 +63,22 @@ body.dark-mode .logo{
     text-decoration: none;
     color: black;
 }
-body.dark-mode .card{
-    
-    margin-top: 30px;
+
+
+
+body.dark-mode .grid-labels, .guess-row{
+    font-family: "Poppins", sans-serif;
+    margin-top: 10px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(5, 0.1fr);
+    color: white;
     justify-content: center;
-    width: 680px;
-    justify-self: center;
-    background-color: #a21a92;
-    border: 2px;
-    border-radius: 10px;
-    padding: 50px;
-   
+    
     
 }
 
-.card p {
-    font-family: "Poppins", sans-serif;
-    font-size: 15px;
-    justify-self: left;
-    line-height: 2rem;
-}
-body.dark-mode .answer-boxes{
-    font-family: "Poppins", sans-serif;
-    margin-top: 10px;
-   text-align: center;
-    display: grid;
-      grid-template-columns: 150px 180px 120px 120px 120px 120px;
-        
-         column-gap: 30px;
-         row-gap: 0px;
-   justify-content: center;
-   color: antiquewhite;
-}
+
 
 
 .answer-box-1, .answer-box-2, .answer-box-3, .answer-box-4{

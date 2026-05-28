@@ -6,6 +6,7 @@ const overlay = document.querySelector(".overlay")
 const exit = document.querySelector(".exit")
 const darkModeButton = document.querySelector(".dark-mode-button")
 let secretCelebrity = null
+let currentGuessCount = 1
 
 darkModeButton.addEventListener('click', ()=>{
     toggleDarkMode()
@@ -116,37 +117,69 @@ function answerChecker(guess, target){
 // This will check if the answer is correct adding to a counter
     if (!guess || !target) return
 
+    const currentRow = document.querySelector(`#row-${currentGuessCount}`);
+    if (!currentRow) return
+
+    const genderTile = currentRow.querySelector(".gender-tile");
+    const natTile = currentRow.querySelector(".nat-tile");
+    const worthTile = currentRow.querySelector(".worth-tile");
+    const heightTile = currentRow.querySelector(".height-tile");
+    const ageTile = currentRow.querySelector(".age-tile");  
+
     if (guess.name.toLowerCase() === target.name.toLowerCase()) {
         alert("Congratulations! You've guessed the celebrity correctly!")
         return
     }
 
-    if (guess.nationality === target.nationality) {
+    genderTile.textContent = guessData.gender;
+    if (guessData.gender === target.gender) {
+        genderTile.classList.add("correct");
     } else {
+        genderTile.classList.add("incorrect");
     }
 
-    if (guess.gender === target.gender) {
+    natTile.textContent = guessData.nationality.toUpperCase();
+    if (guessData.nationality === target.nationality) {
+        natTile.classList.add("correct");
     } else {
-    }   
+        natTile.classList.add("incorrect");
+    } 
 
-    if (guess.net_worth === target.net_worth) {
-    } else if (guess.net_worth > target.net_worth) {
+    worthTile.textContent = `$${(guessData.net_worth / 1000000).toFixed(0)}M`;
+    if (guessData.net_worth === target.net_worth) {
+        worthTile.classList.add("correct");
+    } else if (guessData.net_worth < target.net_worth) {
+        worthTile.classList.add("higher");
+        worthTile.textContent += " ⬆️";
     } else {
+        worthTile.classList.add("lower");
+        worthTile.textContent += " ⬇️";
     }
 
-    const guessHeight = metersToFeetInches(guess.height)
-    const targetHeight = metersToFeetInches(target.height)
-    if (guessHeight === targetHeight) {
-    } else if (guess.height > target.height) {
+    heightTile.textContent = metersToFeetInches(guessData.height);
+    if (guessData.height === target.height) {
+        heightTile.classList.add("correct");
+    } else if (guessData.height < target.height) {
+        heightTile.classList.add("higher");
+        heightTile.textContent += " ⬆️";
     } else {
+        heightTile.classList.add("lower");
+        heightTile.textContent += " ⬇️";
     }
     
-    const currentYear = new Date().getFullYear()
-    const guessAge = currentYear - new Date(guess.birth_date).getFullYear()
-    const targetAge = currentYear - new Date(target.birth_date).getFullYear()
+    const currentYear = new Date().getFullYear();
+    const guessAge = currentYear - new Date(guessData.birthday).getFullYear();
+    const targetAge = currentYear - new Date(target.birthday).getFullYear();
+    ageTile.textContent = `${guessAge} yrs`;
+
     if (guessAge === targetAge) {
-    } else if (guessAge > targetAge) {
+        ageTile.classList.add("correct");
+    } else if (guessAge < targetAge) {
+        ageTile.classList.add("higher");
+        ageTile.textContent += " ⬆️";
     } else {
+        ageTile.classList.add("lower");
+        ageTile.textContent += " ⬇️";
     }
     
     

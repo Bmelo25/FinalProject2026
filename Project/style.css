@@ -44,19 +44,20 @@
     text-decoration: none;
     color: black;
 }
-  .card{
-    
-    margin-top: 30px;
-    justify-content: center;
-    width: 680px;
-    justify-self: center;
-    background-color: #FFD700;
-    border: 2px;
-    border-radius: 10px;
-    padding: 50px;
+   .tile{
+    width: 80px;
+    height: 20px;
+    background-color: white;
+    display: flex;
+    border: 1px solid black;
    
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: translate(20%);
     
-}
+   
+} 
 
 .card p {
     font-family: "Poppins", sans-serif;
@@ -64,24 +65,26 @@
     justify-self: left;
     line-height: 2rem;
 }
-.answer-boxes{
+.grid-labels, .guess-row{
     font-family: "Poppins", sans-serif;
     margin-top: 10px;
-   text-align: center;
+    text-align: center;
     display: grid;
-      grid-template-columns: 150px 180px 120px 120px 120px 120px;
-        
-         column-gap: 30px;
-         row-gap: 0px;
-   justify-content: center;
+    grid-template-columns: repeat(5, 0.1fr);
+    
+    justify-content: center;
+    
+    
+}
+.correct{
+
+}
+
+.incorrect{
+
 }
 
 
-.answer-box-1, .answer-box-2, .answer-box-3, .answer-box-4{
-    background-color: rgb(210, 186, 186);
-    border-width: 1px;
-
-}
 .answer-box:focus{
     outline: none;
 }

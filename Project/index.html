@@ -23,14 +23,14 @@
             </nav>
         </div>
     </header>
-    <div class="card"> 
+    <!-- <div class="card"> 
         <p>Name:????</p>
         <p>nationality:????</p>
         <p>Gender:????</p>
         <p>Net worth:????</p>
         <p>Height:????</p>
         <p>Age:????</p>
-    </div>
+    </div> -->
     <!-- overlay for settings -->
   <div class="overlay">
     <div class="inner">
@@ -44,16 +44,13 @@
         </div>
         
 
-    <div class="answer-boxes">
-        
-      
-         <span>name</span>
-         <span>nationality</span>
+    <div class="grid-labels">
          <span>Gender</span>
+         <span>Nationality</span>
          <span>Net Worth</span>
          <span>Height</span>
          <span>Age</span>
-         
+    </div>
 
       
  
@@ -62,39 +59,59 @@
        
       <!-- These readonly inputs is the box that will put in your inputs to show in correctness -->
       
-    <input class="answer-box-1" readonly>
-       <input class="answer-box-1" readonly>
-       <input class="answer-box-1" readonly>
-       <input class="answer-box-1" readonly>
-       <input class="answer-box-1" readonly>
-       <input class="answer-box-1" readonly>
+    <div id="guesses-board">
+            
+            <div class="guess-row" id="row-1">
+                <div class="tile gender-tile"></div>
+                <div class="tile nat-tile"></div>
+                <div class="tile worth-tile"></div>
+                <div class="tile height-tile"></div>
+                <div class="tile age-tile"></div>
+            </div>
 
-       <input class="answer-box-2" readonly>
-       <input class="answer-box-2" readonly>      
-       <input class="answer-box-2" readonly>
-       <input class="answer-box-2" readonly>
-       <input class="answer-box-2" readonly>
-       <input class="answer-box-2" readonly>
-      
-       
-         
-       <input class="answer-box-3" readonly>
-       <input class="answer-box-3" readonly>
-       <input class="answer-box-3" readonly>
-       <input class="answer-box-3" readonly>
-       <input class="answer-box-3" readonly>
-       <input class="answer-box-3" readonly>
+            <div class="guess-row" id="row-2">
+                <div class="tile gender-tile"></div>
+                <div class="tile nat-tile"></div>
+                <div class="tile worth-tile"></div>
+                <div class="tile height-tile"></div>
+                <div class="tile age-tile"></div>
+            </div>
 
-       <input class="answer-box-4" readonly>
-       <input class="answer-box-4" readonly>
-       <input class="answer-box-4" readonly>
-       <input class="answer-box-4" readonly>
-       <input class="answer-box-4" readonly>
-       <input class="answer-box-4" readonly>
-      
+            <div class="guess-row" id="row-3">
+                <div class="tile gender-tile"></div>
+                <div class="tile nat-tile"></div>
+                <div class="tile worth-tile"></div>
+                <div class="tile height-tile"></div>
+                <div class="tile age-tile"></div>
+            </div>
 
-       
+            <div class="guess-row" id="row-4">
+                <div class="tile gender-tile"></div>
+                <div class="tile nat-tile"></div>
+                <div class="tile worth-tile"></div>
+                <div class="tile height-tile"></div>
+                <div class="tile age-tile"></div>
+            </div>
+
+            <div class="guess-row" id="row-5">
+                <div class="tile gender-tile"></div>
+                <div class="tile nat-tile"></div>
+                <div class="tile worth-tile"></div>
+                <div class="tile height-tile"></div>
+                <div class="tile age-tile"></div>
+            </div>
+
+            <div class="guess-row" id="row-6">
+                <div class="tile gender-tile"></div>
+                <div class="tile nat-tile"></div>
+                <div class="tile worth-tile"></div>
+                <div class="tile height-tile"></div>
+                <div class="tile age-tile"></div>
+            </div>
+
+        </div>
     </div>
+    
  
 </body>
 </html>
