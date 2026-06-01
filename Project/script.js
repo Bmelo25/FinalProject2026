@@ -1,5 +1,4 @@
 const guess = document.querySelector(".guess")
-const answer = document.querySelectorAll(".answer-box-1")
 const card = document.querySelector(".card")
 const settings = document.querySelector(".settings")
 const overlay = document.querySelector(".overlay")
@@ -7,6 +6,32 @@ const exit = document.querySelector(".exit")
 const darkModeButton = document.querySelector(".dark-mode-button")
 let secretCelebrity = null
 let currentGuessCount = 1
+
+guess.addEventListener('keydown', async (e) =>{
+    
+    if (e.key === "Enter" && guess.value.length > 2){
+        let celebrityName = guess.value.toLowerCase().trim()
+        console.log(celebrityName)
+        if (!celebrityName) return
+        // fetch celeb guess data
+        const guessedData = await celebritySearch(celebrityName)
+
+        // if celeb not found alert user
+        if (!guessedData) {
+            alert("Celebrity not found. Please try again.")
+            return
+        }
+        
+
+        answerChecker(guessedData, secretCelebrity)
+
+        guess.value = ""
+            currentGuessCount++
+    
+
+}
+})
+
 
 darkModeButton.addEventListener('click', ()=>{
     toggleDarkMode()
@@ -26,34 +51,6 @@ settings.addEventListener ('click', (e) =>{
 exit.addEventListener('click', () =>{
     overlayOff()
 })
-guess.addEventListener('keydown', async (e) =>{
-    
-    if (e.key === "Enter"){
-        const celebrityName = guess.value.toLowerCase().trim()
-        if (!celebrityName) return
-
-        // fetch celeb guess data
-        const guessedData = await celebritySearch(celebrityName)
-
-        // if celeb not found alert user
-        if (!guessedData) {
-            alert("Celebrity not found. Please try again.")
-            return
-        }
-        
-        answer.forEach(ans => {
-            ans.textContent = guessedData.name
-        });
-
-        answerChecker(guessedData, secretCelebrity)
-
-        guess.value = ""
-    
-
-}
-})
-
-
 function overlayOn (){
     overlay.style.display = "block";
 }
@@ -129,26 +126,26 @@ function answerChecker(guess, target){
     if (guess.name.toLowerCase() === target.name.toLowerCase()) {
         alert("Congratulations! You've guessed the celebrity correctly!")
         return
-    }
+    } else{
 
-    genderTile.textContent = guessData.gender;
-    if (guessData.gender === target.gender) {
+    genderTile.textContent = guess.gender;
+    if (guess.gender === target.gender) {
         genderTile.classList.add("correct");
-    } else {
+    } else  {
         genderTile.classList.add("incorrect");
     }
 
-    natTile.textContent = guessData.nationality.toUpperCase();
-    if (guessData.nationality === target.nationality) {
+    natTile.textContent = guess.nationality;
+    if (guess.nationality === target.nationality) {
         natTile.classList.add("correct");
     } else {
         natTile.classList.add("incorrect");
     } 
 
-    worthTile.textContent = `$${(guessData.net_worth / 1000000).toFixed(0)}M`;
-    if (guessData.net_worth === target.net_worth) {
+    worthTile.textContent = `$${(guess.net_worth / 1000000).toFixed(0)}M`;
+    if (guess.net_worth === target.net_worth) {
         worthTile.classList.add("correct");
-    } else if (guessData.net_worth < target.net_worth) {
+    } else if (guess.net_worth < target.net_worth) {
         worthTile.classList.add("higher");
         worthTile.textContent += " ⬆️";
     } else {
@@ -156,10 +153,10 @@ function answerChecker(guess, target){
         worthTile.textContent += " ⬇️";
     }
 
-    heightTile.textContent = metersToFeetInches(guessData.height);
-    if (guessData.height === target.height) {
+    heightTile.textContent = metersToFeetInches(guess.height);
+    if (guess.height === target.height) {
         heightTile.classList.add("correct");
-    } else if (guessData.height < target.height) {
+    } else if (guess.height < target.height) {
         heightTile.classList.add("higher");
         heightTile.textContent += " ⬆️";
     } else {
@@ -168,7 +165,7 @@ function answerChecker(guess, target){
     }
     
     const currentYear = new Date().getFullYear();
-    const guessAge = currentYear - new Date(guessData.birthday).getFullYear();
+    const guessAge = currentYear - new Date(guess.birthday).getFullYear();
     const targetAge = currentYear - new Date(target.birthday).getFullYear();
     ageTile.textContent = `${guessAge} yrs`;
 
@@ -181,16 +178,35 @@ function answerChecker(guess, target){
         ageTile.classList.add("lower");
         ageTile.textContent += " ⬇️";
     }
-    
-    
+
+    if (guess.name.toLowerCase() === target.name.toLowerCase()) {
+        // Force green indicators across the board
+        genderTile.classList.add("correct");
+        natTile.classList.add("correct");
+        worthTile.classList.add("correct");
+        heightTile.classList.add("correct");
+        ageTile.classList.add("correct");
+        
+        setTimeout(() => {
+            alert(`🎉 Congratulations! You've guessed ${target.name} correctly in ${currentGuessCount} tries!`);
+        }, 100);
+        return;
+    }
+
+    if (currentGuessCount === 6) {
+        setTimeout(() => {
+            alert(`😔 Out of turns! The mystery celebrity was: ${target.name}`);
+        }, 100);
+    }
+}
     
 }
 
 //meters to feet inches
 function metersToFeetInches(meters) {
     const totalInches = meters * 39.3701
-    const feet = Math.floor(totalInches / 12)
-    const inches = Math.round(totalInches % 12)
+    let feet = Math.floor(totalInches / 12)
+    let inches = Math.round(totalInches % 12)
     if (inches === 12) {
         feet += 1
         inches = 0

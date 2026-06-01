@@ -54,6 +54,13 @@ body.dark-mode .settings-menu :hover{
     
    
 } 
+.correct{
+background-color: green;
+}
+
+.incorrect{
+background-color: gray;
+}
 
 body.dark-mode .logo{
     text-align: left;
@@ -174,4 +181,48 @@ body.dark-mode .dark-mode-button:hover{
 
 .exit:hover{
     color: red;
+}
+
+@media(max-width: 768px){
+.settings-menu{
+ font-family: "Poppins", sans-serif;
+    
+       margin-left: 350px;
+    font-size: 25px;
+  gap: 8px;
+    
+   
+
+}
+
+/* body.dark-mode .grid-labels, .guess-row{
+    font-family: "Poppins", sans-serif;
+    margin-top: 10px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(5, 0.1fr);
+    
+    margin-top: 200px;
+    justify-content: center;
+    
+    
+} */
+
+body.dark-mode .grid-labels, .guess-row{
+    font-family: "Poppins", sans-serif;
+    margin-top: 10px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(5, 0.15fr);
+    justify-content: center;
+    column-gap: 15px;
+    
+}
+body.dark-mode .grid-labels{
+ margin-top: 200px;
+ gap: 30px;
+ justify-content: center;
+ margin-left: 20px;
+}
+
 }
