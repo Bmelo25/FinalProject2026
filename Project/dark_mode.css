@@ -41,8 +41,8 @@ body.dark-mode .settings-menu :hover{
 }
 
   body.dark-mode .tile{
-    width: 80px;
-    height: 20px;
+    width: 100%;
+    height: 40px;
     background-color: rgb(237, 113, 229);
     display: flex;
     border: 1px solid black;
@@ -50,16 +50,19 @@ body.dark-mode .settings-menu :hover{
     align-items: center;
     justify-content: center;
     text-align: center;
-    transform: translate(20%);
     
    
 } 
-.correct{
+body.dark-mode .correct{
 background-color: green;
 }
 
-.incorrect{
+body.dark-mode .incorrect{
 background-color: gray;
+}
+
+body.dark-mode .higher, body.dark-mode .lower{
+background-color: yellow;
 }
 
 body.dark-mode .logo{
@@ -72,20 +75,28 @@ body.dark-mode .logo{
 }
 
 
+body.dark-mode #guesses-board {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
 
 body.dark-mode .grid-labels, .guess-row{
-    font-family: "Poppins", sans-serif;
+ font-family: "Poppins", sans-serif;
     margin-top: 10px;
     text-align: center;
     display: grid;
-    grid-template-columns: repeat(5, 0.1fr);
-    color: white;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
     justify-content: center;
+    
     
     
 }
 
-
+body.dark-mode .grid-labels{
+    color: white;
+}
 
 
 .answer-box-1, .answer-box-2, .answer-box-3, .answer-box-4{
@@ -185,9 +196,9 @@ body.dark-mode .dark-mode-button:hover{
 
 @media(max-width: 768px){
 .settings-menu{
- font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
     
-       margin-left: 350px;
+       margin-left: auto;
     font-size: 25px;
   gap: 8px;
     
@@ -195,27 +206,14 @@ body.dark-mode .dark-mode-button:hover{
 
 }
 
-/* body.dark-mode .grid-labels, .guess-row{
-    font-family: "Poppins", sans-serif;
-    margin-top: 10px;
-    text-align: center;
-    display: grid;
-    grid-template-columns: repeat(5, 0.1fr);
-    
-    margin-top: 200px;
-    justify-content: center;
-    
-    
-} */
 
-body.dark-mode .grid-labels, .guess-row{
-    font-family: "Poppins", sans-serif;
-    margin-top: 10px;
-    text-align: center;
-    display: grid;
-    grid-template-columns: repeat(5, 0.15fr);
-    justify-content: center;
-    column-gap: 15px;
+
+
+body.dark-mode .grid-labels, body.dark-mode .guess-row{
+   grid-template-columns: repeat(5, 1fr);
+        gap: 4px;
+        margin-top: 10px;
+    
     
 }
 body.dark-mode .grid-labels{
@@ -223,6 +221,39 @@ body.dark-mode .grid-labels{
  gap: 30px;
  justify-content: center;
  margin-left: 20px;
+}
+
+}
+
+
+@media(max-width: 1200px){
+body.dark-mode .grid-labels, body.dark-mode .guess-row{
+   
+        gap: 4px;
+        margin-top: 10px;
+    
+}
+body.dark-mode .grid-labels{
+  
+        gap: 4px;
+        margin-top: 10px;
+    
+}
+
+}
+
+@media(max-width: 375px){
+ body.dark-mode .grid-labels, body.dark-mode .guess-row{
+   
+        gap: 4px;
+        margin-top: 10px;
+    
+}
+body.dark-mode .grid-labels{
+  
+        gap: 4px;
+        margin-top: 10px;
+    
 }
 
 }

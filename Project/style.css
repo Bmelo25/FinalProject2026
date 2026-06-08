@@ -24,8 +24,10 @@
 
 .settings-menu{
     font-family: "Poppins", sans-serif;
-    
-
+    justify-self: right;
+    justify-content: right;
+    display: flex;
+    align-content: right;
     font-size: 25px;
   gap: 8px;
    
@@ -45,8 +47,8 @@
     color: black;
 }
    .tile{
-    width: 80px;
-    height: 20px;
+    width: 100%;
+    height: 40px;
     background-color: white;
     display: flex;
     border: 1px solid black;
@@ -54,7 +56,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    transform: translate(20%);
+  
     
    
 } 
@@ -65,20 +67,24 @@
     justify-self: left;
     line-height: 2rem;
 }
+
+#guesses-board {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
 .grid-labels, .guess-row{
     font-family: "Poppins", sans-serif;
     margin-top: 10px;
     text-align: center;
     display: grid;
-    grid-template-columns: repeat(5, 0.1fr);
-    
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
     justify-content: center;
     
     
 }
-.grid-labels{
-    margin-right: 10px;
-}
+
 .correct{
 background-color: green;
 }
@@ -176,8 +182,8 @@ border-radius: 12px;
 .settings-menu{
  font-family: "Poppins", sans-serif;
     
-       margin-left: 350px;
-    font-size: 25px;
+       margin-left: auto;
+    font-size: 16px;
   gap: 8px;
     
    
@@ -185,23 +191,55 @@ border-radius: 12px;
 }
 
 .grid-labels, .guess-row{
-    font-family: "Poppins", sans-serif;
-    margin-top: 10px;
-    text-align: center;
-    display: grid;
-    grid-template-columns: repeat(5, 0.15fr);
-    justify-content: center;
-    column-gap: 15px;
+     grid-template-columns: repeat(5, 1fr);
+        gap: 4px;
+        margin-top: 10px;
     
 }
 .grid-labels{
- margin-top: 200px;
- gap: 30px;
- justify-content: center;
- margin-left: 20px;
+font-size: 10px;
 }
 
 }
 .guess-row{
     font-size: 8px;
+}
+
+@media(max-width: 1200px){
+.grid-labels, .guess-row{
+   
+        gap: 4px;
+        margin-top: 10px;
+    
+}
+.settings-menu{
+    font-size: 16px;
+}
+.grid-labels{
+  
+        gap: 4px;
+        margin-top: 10px;
+    
+}
+
+}
+
+@media(max-width: 375px){
+    .grid-labels, .guess-row{
+   
+        gap: 4px;
+        margin-top: 10px;
+    
+}
+
+.settings-menu{
+    font-size: 16px;
+}
+.grid-labels{
+  
+        gap: 4px;
+        margin-top: 10px;
+    
+}
+
 }

@@ -11,23 +11,23 @@ guess.addEventListener('keydown', async (e) =>{
     
     if (e.key === "Enter" && guess.value.length > 2){
         let celebrityName = guess.value.toLowerCase().trim()
-        console.log(celebrityName)
+        const guessedData = await celebritySearch(celebrityName)
+          if (!guessedData) {
+            alert("Celebrity not found. Please try again.")
+            return;
+        } else{ 
         if (!celebrityName) return
         // fetch celeb guess data
-        const guessedData = await celebritySearch(celebrityName)
 
         // if celeb not found alert user
-        if (!guessedData) {
-            alert("Celebrity not found. Please try again.")
-            return
-        }
+      
         
 
         answerChecker(guessedData, secretCelebrity)
 
         guess.value = ""
             currentGuessCount++
-    
+        }
 
 }
 })
@@ -100,9 +100,6 @@ const generateCelebrity = async () => {
         const math = Math.floor(Math.random() * answerdata.length)
         // the random celeb generation uses math to generate a random celebrity out of the array of 30
         secretCelebrity = answerdata[math]  
-
-  
-
         console.log(secretCelebrity)
     } catch (error) {
         console.log(error)
@@ -162,7 +159,7 @@ function answerChecker(guess, target){
     } else {
         heightTile.classList.add("lower");
         heightTile.textContent += " ⬇️";
-    }
+    } 
     
     const currentYear = new Date().getFullYear();
     const guessAge = currentYear - new Date(guess.birthday).getFullYear();
@@ -177,6 +174,7 @@ function answerChecker(guess, target){
     } else {
         ageTile.classList.add("lower");
         ageTile.textContent += " ⬇️";
+    }
     }
 
     if (guess.name.toLowerCase() === target.name.toLowerCase()) {
@@ -200,7 +198,7 @@ function answerChecker(guess, target){
     }
 }
     
-}
+
 
 //meters to feet inches
 function metersToFeetInches(meters) {
