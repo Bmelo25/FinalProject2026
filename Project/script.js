@@ -7,31 +7,30 @@ const darkModeButton = document.querySelector(".dark-mode-button")
 let secretCelebrity = null
 let currentGuessCount = 1
 
+function loadDarkMode() {
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode')
+        darkModeButton.textContent = 'light mode'
+    }
+}
+
+function saveDarkMode() {
+    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'))
+}
+
 guess.addEventListener('keydown', async (e) =>{
-    
     if (e.key === "Enter" && guess.value.length > 2){
         let celebrityName = guess.value.toLowerCase().trim()
         const guessedData = await celebritySearch(celebrityName)
           if (!guessedData) {
             alert("Celebrity not found. Please try again.")
             return;
-        } else{ 
-        if (!celebrityName) return
-        // fetch celeb guess data
-
-        // if celeb not found alert user
-      
-        
-
-        answerChecker(guessedData, secretCelebrity)
-
-        guess.value = ""
-            currentGuessCount++
         }
-
-}
+        answerChecker(guessedData, secretCelebrity)
+        guess.value = ""
+        currentGuessCount++
+    }
 })
-
 
 darkModeButton.addEventListener('click', ()=>{
     toggleDarkMode()
@@ -40,17 +39,18 @@ darkModeButton.addEventListener('click', ()=>{
     } else if(!document.body.classList.contains('dark-mode')){
         darkModeButton.textContent = "dark mode"
     }
+    saveDarkMode()
 })
 
 settings.addEventListener ('click', (e) =>{
     e.preventDefault()
-  
-   overlayOn()
-
+    overlayOn()
 })
+
 exit.addEventListener('click', () =>{
     overlayOff()
 })
+
 function overlayOn (){
     overlay.style.display = "block";
 }
@@ -62,37 +62,29 @@ function toggleDarkMode(){
     document.body.classList.toggle('dark-mode')
 }
 
-
-
 // This is going to be fetching the API and generating a random celebrity, assigning them to correct variables and 
 const celebritySearch = async (name) => {
-try{
-    const url = `https://api.api-ninjas.com/v1/celebrity?name=${name}`
-
-        const response = await fetch(url, {
-        headers: { 'X-Api-Key': 'qR8GaBspsOHmoycr4KLkodVwTi3uMJjEDtd0UXr5'}
-    })
-    const data = await response.json()
-
-    if (data.length === 0) return null
-
-    return data[0]
-   
-
+    try{
+        const response = await fetch(
+            `https://api.api-ninjas.com/v1/celebrity?name=${name}`,
+            { headers: { 'X-Api-Key': 'qR8GaBspsOHmoycr4KLkodVwTi3uMJjEDtd0UXr5' } }
+        )
+        const data = await response.json()
+        if (data.length === 0) return null
+        return data[0]
     } catch (error) {
         console.log(error)
         return null
     }
 }
 
-
 // this is the randomly generated celebrity
 const generateCelebrity = async () => {
     try{
-        const url = `https://api.api-ninjas.com/v1/celebrity?min_net_worth=10000000`//changed to 10m
+        const url = `https://api.api-ninjas.com/v1/celebrity?min_net_worth=10000000` //changed to 10m
 
         const response = await fetch(url, {
-        headers: {'X-Api-Key': 'qR8GaBspsOHmoycr4KLkodVwTi3uMJjEDtd0UXr5'}
+            headers: {'X-Api-Key': 'qR8GaBspsOHmoycr4KLkodVwTi3uMJjEDtd0UXr5'}
         })
 
         const answerdata = await response.json()
@@ -107,6 +99,7 @@ const generateCelebrity = async () => {
 }
 
 generateCelebrity()
+
 function answerChecker(guess, target){
 // This will check if the answer is correct adding to a counter
     if (!guess || !target) return
@@ -197,8 +190,6 @@ function answerChecker(guess, target){
         }, 100);
     }
 }
-    
-
 
 //meters to feet inches
 function metersToFeetInches(meters) {
@@ -212,3 +203,4 @@ function metersToFeetInches(meters) {
     return `${feet}'${inches}"`    
 }
 
+loadDarkMode()
